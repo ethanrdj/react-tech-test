@@ -1,16 +1,28 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import "../styles/Search.css";
 
 const Search = (props) => {
+  const [searchValue, setSearchValue] = useState("");
   return (
     <>
-      <input
-        className="search-bar"
-        type="text"
-        data-testid="search-test"
-      ></input>
+      <form>
+        <input
+          className="search-bar"
+          type="text"
+          onChange={(e) => setSearchValue(e.target.value)}
+          data-testid="search-test"
+        ></input>
+        <button className="search-button" type="submit">
+          Search
+        </button>
+      </form>
     </>
   );
+};
+
+Search.prototype = {
+  setSearchValue: PropTypes.string.isRequired,
 };
 
 export default Search;
