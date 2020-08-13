@@ -4,6 +4,7 @@ import Search from "./Search";
 import { useState } from "react";
 
 function App() {
+  const [searchResults, setSearchResults] = useState("");
   return (
     <div className="App" data-testid="App-test">
       <img
@@ -12,7 +13,7 @@ function App() {
         alt="logo"
         data-testid="image-test"
       ></img>
-      <Search />
+      <Search setSearchResults={setSearchResults} />
     </div>
   );
 }

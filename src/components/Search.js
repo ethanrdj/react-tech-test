@@ -1,16 +1,23 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import getImages from "../requests/getImages";
 import "../styles/Search.css";
 
 const Search = (props) => {
-  const [searchValue, setSearchValue] = useState("");
+  const { setSearchResults } = props;
+  const [value, setValue] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setSearchResults(getImages(value));
+  };
   return (
     <>
-      <form>
+      <form className="search-form " onSubmit={handleSubmit}>
         <input
           className="search-bar"
           type="text"
-          onChange={(e) => setSearchValue(e.target.value)}
+          onChange={(e) => setValue(e.target.value)}
           data-testid="search-test"
         ></input>
         <button className="search-button" type="submit">
@@ -21,8 +28,6 @@ const Search = (props) => {
   );
 };
 
-Search.prototype = {
-  setSearchValue: PropTypes.string.isRequired,
-};
+Search.prototype = {};
 
 export default Search;
