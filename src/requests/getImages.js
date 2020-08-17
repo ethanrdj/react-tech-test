@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const getImages = async (query) => {
+const getImages = (query) => {
   if (!query) {
     return Promise.resolve([]);
   } else {
-    await axios
+    return axios
       .get(`https://images-api.nasa.gov/search?q=${query}`)
       .then((response) => {
         const imageResults = response.data.collection.items;

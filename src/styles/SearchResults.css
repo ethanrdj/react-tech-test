@@ -1,0 +1,36 @@
+p {
+  display: flex;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: red;
+  margin-bottom: 40px;
+  margin-left: 120px;
+}
+
+.card-image {
+  max-width: 30%;
+  height: auto;
+  border-radius: 20px;
+  margin: 45px;
+  margin-top: 10px;
+  border-style: solid;
+  border-color: gold;
+  border-width: 10px;
+}
+
+.all-images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+@media (max-width: 380px) {
+  .all-images {
+    flex-direction: column;
+  }
+
+  .card-image {
+    max-width: 75%;
+    height: auto;
+  }
+}

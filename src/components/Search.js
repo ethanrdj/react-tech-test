@@ -3,13 +3,12 @@ import PropTypes from "prop-types";
 import getImages from "../requests/getImages";
 import "../styles/Search.css";
 
-const Search = (props) => {
-  const { setSearchResults } = props;
-  const [value, setValue] = useState("");
+const Search = ({ setSearchResults }) => {
+  const [value, setValue] = useState();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    setSearchResults(getImages(value));
+    setSearchResults(await getImages(value));
   };
   return (
     <>
@@ -28,6 +27,8 @@ const Search = (props) => {
   );
 };
 
-Search.prototype = {};
+Search.prototype = {
+  setSearchResults: PropTypes.func.isRequired,
+};
 
 export default Search;
